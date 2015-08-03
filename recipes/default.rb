@@ -2,7 +2,7 @@
 # Cookbook Name:: knectar_server
 # Recipe:: default
 #
-# Copyright (C) 2013 Knectar
+# Copyright (C) 2015 Knectar
 # 
 
 
@@ -19,5 +19,24 @@ user "admin" do
   username "admin"
   shell "/usr/bin/zsh"
   home "/home/admin"
+  action :create
+end
+
+directory '/etc/nginx/snippets' do
+  owner 'root'
+  group 'root'
+  mode '0755'
+
+  action :create
+end
+
+file 'passwd' do
+  path '/etc/nginx/snippets/passwd'
+  backup 5
+  owner 'root'
+  group 'root'
+  mode '0644'
+  content 'content here'
+
   action :create
 end
