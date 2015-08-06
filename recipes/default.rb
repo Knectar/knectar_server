@@ -5,24 +5,15 @@
 # Copyright (C) 2015 Knectar
 # 
 
+include_recipe "users"
 
-user "site" do
-  supports :manage_home => true
-  username "site"
-  shell "/usr/bin/zsh"
-  home "/home/site"
+users_manage "knectar" do
   action :create
 end
 
-user "admin" do
-  supports :manage_home => true
-  username "admin"
-  shell "/usr/bin/zsh"
-  home "/home/admin"
-  action :create
-end
 
-directory '/etc/nginx/snippets' do
+
+remote_directory '/etc/nginx/snippets' do
   owner 'root'
   group 'root'
   mode '0755'
@@ -30,13 +21,10 @@ directory '/etc/nginx/snippets' do
   action :create
 end
 
-file 'passwd' do
-  path '/etc/nginx/snippets/passwd'
-  backup 5
+
+cookbook_file '/etc/nginx/snippets/passwd' do
   owner 'root'
   group 'root'
   mode '0644'
-  content 'content here'
-
   action :create
 end
