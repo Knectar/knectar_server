@@ -20,11 +20,3 @@ remote_directory '/etc/nginx/snippets' do
 
   action :create
 end
-
-
-cookbook_file '/etc/nginx/snippets/passwd' do
-  owner 'root'
-  group 'root'
-  mode '0644'
-  action :create
-end
