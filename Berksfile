@@ -4,3 +4,4 @@ metadata
 
 cookbook "zsh"
 cookbook "users"
+cookbook "openssh"
