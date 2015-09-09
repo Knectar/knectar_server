@@ -5,7 +5,14 @@
 # Copyright (C) 2015 Knectar
 # 
 
+
 include_recipe "users"
+
+chef_gem 'ruby-shadow' do
+  action :install
+end
+
+require 'ruby-shadow'
 
 users_manage "knectar" do
   action :create
