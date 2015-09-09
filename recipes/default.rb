@@ -9,10 +9,11 @@
 include_recipe "users"
 
 chef_gem 'ruby-shadow' do
+  provider Chef::Provider::Package::Rubygems
   action :install
 end
 
-require 'ruby-shadow'
+require 'shadow'
 
 users_manage "knectar" do
   action :create
